@@ -1,0 +1,107 @@
+/* app css stylesheet */
+
+.menu {
+  list-style: none;
+  border-bottom: 0.1em solid black;
+  margin-bottom: 2em;
+  padding: 0 0 0.5em;
+}
+
+.menu:before {
+  content: "[";
+}
+
+.menu:after {
+  content: "]";
+}
+
+.menu > li {
+  display: inline;
+}
+
+.menu > li + li:before {
+  content: "|";
+  padding-right: 0.3em;
+}
+
+#divHaut {
+  height:50%;
+}
+
+#divBas {
+  height:50%;
+}
+
+.divQuart {
+    height: 100%;
+}
+
+#divRecherche {
+    float: left;
+    width: 50%;
+}
+
+#divPortefeuille {
+    float: left;
+    width: 50%;
+}
+
+#divValue {
+    float: right;
+    width: 50%;
+}
+
+#divGraphique {
+    float: right;
+    width: 50%;
+}
+
+#tableInputRecherche {
+    margin:auto;
+}
+
+#divTableResultatRecherche {
+    overflow-y: auto;
+    max-height: 85%;
+}
+
+#tableResultatRecherche {
+    width: 100%;
+}
+
+#tableEnteteResultatRecherche {
+    height: 10px;
+}
+
+#tableEnteteSeparateurResultatRecherche {
+    height: 1px;
+}
+
+#pRecherche {
+    float: inherit;
+}
+
+.trResultatRecherche {
+    height: 40px;
+}
+
+.tdPremierResultatRecherche {
+    border: 1px solid black;
+    width: 70%;
+}
+
+.tdDeuxiemeResultatRecherche {
+    border: 1px solid black;
+    width: 30%;
+}
+
+
+/* partie portefeuille d'actions */
+
+#tableEntetePortefeuille {
+    margin:auto;
+}
+
+#pPortefeuille {
+    margin:auto;
+}
