@@ -1,12 +1,12 @@
 angular.module('action').controller('actionsRechercheController',
-    ['$scope', '$http', 'Product', function($scope, $http, Product) {
+    ['$scope', '$http', 'Action', function($scope, $http, Action) {
 
-        $http.get('http://localhost:9292/products')
+        $http.get('actions.html')
             .then(function(response) {
-                $scope.products = [];
-                response.data.products.forEach(function(data) {
-                    var newProduct = new Product(data);
-                    $scope.products.push(newProduct);
+                $scope.actions = [];
+                response.data.actions.forEach(function(data) {
+                    var newAction = new Action(data);
+                    $scope.actions.push(newAction);
                 });
             }, function(error) {
                 console.log(error);
