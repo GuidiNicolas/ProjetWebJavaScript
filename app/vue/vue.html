@@ -1,10 +1,13 @@
 <html>
     <head>
         <title>ActionsDuSwag</title>
-        <LINK href="../app.css" rel="stylesheet" type="text/css">
-        <script type="text/javascript" src="../lib/angular.js"></script>
-        <script type="text/javascript" src="vue.js"></script>
-        <script type="text/javascript" src="../lib/jquery-2.1.4.min.js"></script>
+        <LINK href="app.css" rel="stylesheet" type="text/css">
+        <LINK href="c3.css" rel="stylesheet" type="text/css">
+        <LINK href="slate.css" rel="stylesheet" type="text/css">
+        <script type="text/javascript" src="angular.js"></script>
+        <script type="text/javascript" src="jquery-2.1.4.min.js"></script>
+        <script type="text/javascript" src="d3.js"></script>
+        <script type="text/javascript" src="c3.js"></script>
     </head>
 
     <div id="divHaut" class="divMoitie">
@@ -18,6 +21,9 @@
                     <td>
                         <input id="inputRecherche">
                     </td>
+                    <td>
+                        <button id="boutonRechercher" class="btn btn-primary btn-sm">Rechercher</button>
+                    </td>
             </table>
 
             <div id="divTableResultatRecherche">
@@ -25,10 +31,14 @@
 
                     <tr id="tableEnteteResultatRecherche">
                         <td class="tdPremierResultatRecherche">
-                            Nom
+                            Symbole
                         </td>
 
                         <td class="tdDeuxiemeResultatRecherche">
+                            Nom
+                        </td>
+
+                        <td class="tdTroisiemeResultatRecherche">
                             Valeur ($)
                         </td>
                     </tr>
@@ -37,133 +47,11 @@
 
                     </tr>
 
-                    <tr ng-repeat="action in actions" action>
-
-                    </tr>
-
                     <!--
-
-                    <tr class="trResultatRecherche">
-                        <td class="tdPremierResultatRecherche">
-                            Apple
-                        </td>
-
-                        <td class="tdDeuxiemeResultatRecherche">
-                            La peau du cul
-                        </td>
+                    <tr ng-repeat="action in actions" action>
                     </tr>
-
-                    <tr class="trResultatRecherche">
-                        <td class="tdPremierResultatRecherche">
-                            Microsoft
-                        </td>
-
-                        <td class="tdDeuxiemeResultatRecherche">
-                            503 $
-                        </td>
-                    </tr>
-
-                    <tr class="trResultatRecherche">
-                        <td class="tdPremierResultatRecherche">
-                            Nvidia
-                        </td>
-
-                        <td class="tdDeuxiemeResultatRecherche">
-                            120 $
-                        </td>
-                    </tr>
-
-                    <tr class="trResultatRecherche">
-                        <td class="tdPremierResultatRecherche">
-                            Nvidia
-                        </td>
-
-                        <td class="tdDeuxiemeResultatRecherche">
-                            120 $
-                        </td>
-                    </tr>
-
-                    <tr class="trResultatRecherche">
-                        <td class="tdPremierResultatRecherche">
-                            Nvidia
-                        </td>
-
-                        <td class="tdDeuxiemeResultatRecherche">
-                            120 $
-                        </td>
-                    </tr>
-
-                    <tr class="trResultatRecherche">
-                        <td class="tdPremierResultatRecherche">
-                            Nvidia
-                        </td>
-
-                        <td class="tdDeuxiemeResultatRecherche">
-                            120 $
-                        </td>
-                    </tr>
-
-                    <tr class="trResultatRecherche">
-                        <td class="tdPremierResultatRecherche">
-                            Nvidia
-                        </td>
-
-                        <td class="tdDeuxiemeResultatRecherche">
-                            120 $
-                        </td>
-                    </tr>
-
-                    <tr class="trResultatRecherche">
-                        <td class="tdPremierResultatRecherche">
-                            Nvidia
-                        </td>
-
-                        <td class="tdDeuxiemeResultatRecherche">
-                            120 $
-                        </td>
-                    </tr>
-
-                    <tr class="trResultatRecherche">
-                        <td class="tdPremierResultatRecherche">
-                            Nvidia
-                        </td>
-
-                        <td class="tdDeuxiemeResultatRecherche">
-                            120 $
-                        </td>
-                    </tr>
-
-                    <tr class="trResultatRecherche">
-                        <td class="tdPremierResultatRecherche">
-                            Nvidia
-                        </td>
-
-                        <td class="tdDeuxiemeResultatRecherche">
-                            120 $
-                        </td>
-                    </tr>
-
-                    <tr class="trResultatRecherche">
-                        <td class="tdPremierResultatRecherche">
-                            Nvidia
-                        </td>
-
-                        <td class="tdDeuxiemeResultatRecherche">
-                            120 $
-                        </td>
-                    </tr>
-
-                    <tr class="trResultatRecherche">
-                        <td class="tdPremierResultatRecherche">
-
-                        </td>
-
-                        <td class="tdDeuxiemeResultatRecherche">
-
-                        </td>
-                    </tr>
-
                     -->
+
                 </table>
 
             </div>
@@ -171,7 +59,7 @@
             <table id="tableAcheter">
                 <tr>
                     <td>
-                        <button id="boutonAcheter" class="btn btn-primary btn-sm">Acheter l'action</button>
+                        <button id="boutonAcheter" class="btn btn-primary btn-sm" disabled="true">Acheter l'action</button>
                     </td>
                 </tr>
             </table>
@@ -179,10 +67,21 @@
         </div>
 
         <div id="divGraphique" class="divQuart">
-            <table id="tableGraphique">
+            <table class="tableGraphique">
                 <tr>
                     <td>
-                        <p id="pEnteteGraphique"> Graphique du swag : </p>
+                        <p id="pEnteteGraphique"> Evolution de la plus value : </p>
+                    </td>
+                </tr>
+            </table>
+            <div id="chart"></div>
+            <table class="tableGraphique">
+                <tr>
+                    <td class="tdBoutonsGraphique">
+                        <button id="boutonNoLimit" class="btn btn-primary btn-sm">No limit no respect !</button>
+                    </td>
+                    <td class="tdBoutonsGraphique">
+                        <button id="boutonLimit" class="btn btn-primary btn-sm">Limiter à 30 iterations</button>
                     </td>
                 </tr>
             </table>
@@ -205,184 +104,55 @@
             <div id="divTablePortefeuilleActions">
                 <table id="tablePortefeuilleActions">
 
-                    <tr id="tableEntetePortefeuilleActions">
-                        <td class="tdPremierPortefeuilleActions">
-                            Nom
-                        </td>
+                    <tbody>
 
-                        <td class="tdDeuxiemePortefeuilleActions">
-                            Valeur d'achat ($)
-                        </td>
+                        <tr id="tableEntetePortefeuilleActions">
+                            <td class="tdPremierPortefeuilleActions">
+                                Symbole
+                            </td>
 
-                        <td class="tdTroisiemePortefeuilleActions">
-                            Valeur actuelle ($)
-                        </td>
-                    </tr>
+                            <td class="tdDeuxiemePortefeuilleActions">
+                                Nom
+                            </td>
 
-                    <tr id="tableEnteteSeparateurPortefeuilleActions">
+                            <td class="tdTroisiemePortefeuilleActions">
+                                Valeur d'achat ($)
+                            </td>
 
-                    </tr>
+                            <td class="tdQuatriemePortefeuilleActions">
+                                Valeur actuelle ($)
+                            </td>
+                        </tr>
 
-                    <tr class="trPortefeuilleActions">
-                        <td class="tdPremierPortefeuilleActions">
-                            Orange
-                        </td>
+                        <tr id="tableEnteteSeparateurPortefeuilleActions">
 
-                        <td class="tdDeuxiemePortefeuilleActions">
-                            400
-                        </td>
 
-                        <td class="tdTroisiemePortefeuilleActions">
-                            500
-                        </td>
-
-                    </tr>
-
-                    <tr class="trPortefeuilleActions">
-                        <td class="tdPremierPortefeuilleActions">
-                            Apple
-                        </td>
-
-                        <td class="tdDeuxiemePortefeuilleActions">
-                            La peau du cul
-                        </td>
-
-                        <td class="tdTroisiemePortefeuilleActions">
-                            La peau des couilles
-                        </td>
-                    </tr>
-
-                    <tr class="trPortefeuilleActions">
-                        <td class="tdPremierPortefeuilleActions">
-                            Microsoft
-                        </td>
-
-                        <td class="tdDeuxiemePortefeuilleActions">
-                            503
-                        </td>
-
-                        <td class="tdTroisiemePortefeuilleActions">
-                            700
-                        </td>
-                    </tr>
-
-                    <tr class="trPortefeuilleActions">
-                        <td class="tdPremierPortefeuilleActions">
-                            Nvidia
-                        </td>
-
-                        <td class="tdDeuxiemePortefeuilleActions">
-                            120
-                        </td>
-
-                        <td class="tdTroisiemePortefeuilleActions">
-                            70
-                        </td>
-                    </tr>
-
-                    <tr class="trPortefeuilleActions">
-                        <td class="tdPremierPortefeuilleActions">
-                            Nvidia
-                        </td>
-
-                        <td class="tdDeuxiemePortefeuilleActions">
-                            120
-                        </td>
-
-                        <td class="tdTroisiemePortefeuilleActions">
-                            70
-                        </td>
-                    </tr>
-
-                    <tr class="trPortefeuilleActions">
-                        <td class="tdPremierPortefeuilleActions">
-                            Nvidia
-                        </td>
-
-                        <td class="tdDeuxiemePortefeuilleActions">
-                            120
-                        </td>
-
-                        <td class="tdTroisiemePortefeuilleActions">
-                            70
-                        </td>
-                    </tr>
-
-                    <tr class="trPortefeuilleActions">
-                        <td class="tdPremierPortefeuilleActions">
-                            Nvidia
-                        </td>
-
-                        <td class="tdDeuxiemePortefeuilleActions">
-                            120
-                        </td>
-
-                        <td class="tdTroisiemePortefeuilleActions">
-                            70
-                        </td>
-                    </tr>
-
-                    <tr class="trPortefeuilleActions">
-                        <td class="tdPremierPortefeuilleActions">
-                            Nvidia
-                        </td>
-
-                        <td class="tdDeuxiemePortefeuilleActions">
-                            120
-                        </td>
-
-                        <td class="tdTroisiemePortefeuilleActions">
-                            70
-                        </td>
-                    </tr>
-
-                    <tr class="trPortefeuilleActions">
-                        <td class="tdPremierPortefeuilleActions">
-                            Nvidia
-                        </td>
-
-                        <td class="tdDeuxiemePortefeuilleActions">
-                            120
-                        </td>
-
-                        <td class="tdTroisiemePortefeuilleActions">
-                            70
-                        </td>
-                    </tr>
-
-                    <tr class="trPortefeuilleActions">
-                        <td class="tdPremierPortefeuilleActions">
-                            Nvidia
-                        </td>
-
-                        <td class="tdDeuxiemePortefeuilleActions">
-                            120
-                        </td>
-
-                        <td class="tdTroisiemePortefeuilleActions">
-                            70
-                        </td>
-                    </tr>
+                    </tbody>
 
                 </table>
             </div>
 
-        </div>
-
-        <div id="divValue" class="divQuart">
-            <table id="tableRecapitulatif">
+            <table id="tableVendre">
                 <tr>
                     <td>
-                        <p id="pEnteteRecapitulatif"> Recapitulatif des actions : </p>
+                        <button id="boutonVendre" class="btn btn-primary btn-sm" disabled="true">Vendre l'action</button>
                     </td>
                 </tr>
             </table>
 
+        </div>
+
+        <div id="divValue" class="divQuart">
             <div id="divRecapitulatif">
-                <p id="pRecapitulatif"> VALEUR </p>
+                <p class="Recapitulatif"> Plus value des actions possédées : </p>
+                <p class="ResultatRecapitulatif" id="pRecapitulatif"> Chargement ... </p>
+
+                <p class="Recapitulatif"> Valeur actuelle des actions possédées : </p>
+                <p class="ResultatRecapitulatif" id="pValeurTotale"> 0 </p>
             </div>
         </div>
 
     </div>
 
+    <script type="text/javascript" src="vue.js"></script>
 </html>

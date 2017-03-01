@@ -1,0 +1,248 @@
+/* app css stylesheet */
+
+.menu {
+    list-style: none;
+    border-bottom: 0.1em solid black;
+    margin-bottom: 2em;
+    padding: 0 0 0.5em;
+}
+
+.menu:before {
+    content: "[";
+}
+
+.menu:after {
+    content: "]";
+}
+
+.menu > li {
+    display: inline;
+}
+
+.menu > li + li:before {
+    content: "|";
+    padding-right: 0.3em;
+}
+
+#divHaut {
+    height:50%;
+}
+
+#divBas {
+    height:50%;
+}
+
+.divQuart {
+    height: 100%;
+    border: 1px solid #ffffff;
+}
+
+#divRecherche {
+    float: left;
+    width: 50%;
+}
+
+#divPortefeuille {
+    float: left;
+    width: 50%;
+}
+
+#divValue {
+    margin:auto;
+    float: right;
+    width: 50%;
+}
+
+#divGraphique {
+    float: right;
+    width: 50%;
+}
+
+#tableInputRecherche {
+    margin:auto;
+}
+
+#divTableResultatRecherche {
+    overflow-y: auto;
+    max-height: 80%;
+}
+
+#tableResultatRecherche {
+    width: 100%;
+}
+
+#tableEnteteResultatRecherche {
+    height: 10px;
+}
+
+#tableEnteteSeparateurResultatRecherche {
+    height: 1px;
+}
+
+#pRecherche {
+    float: inherit;
+}
+
+.trResultatRecherche {
+    height: 40px;
+}
+
+.selected {
+    color: #ffffff;
+    background-color: #0b1169;
+}
+
+.selectedVente {
+    color: #ffffff;
+    background-color: #0b1169;
+}
+
+.tdPremierResultatRecherche {
+    border: 1px solid black;
+    width: 10%;
+}
+
+.tdDeuxiemeResultatRecherche {
+    border: 1px solid black;
+    width: 60%;
+}
+
+.tdTroisiemeResultatRecherche {
+    border: 1px solid black;
+    width: 30%;
+}
+
+#tableAcheter {
+    margin:auto;
+}
+
+#boutonAcheter {
+    margin:auto;
+}
+
+#tableVendre {
+    margin:auto;
+}
+
+#boutonVendre {
+    margin:auto;
+}
+
+/* partie portefeuille d'actions */
+
+#tableEntetePortefeuille {
+    margin:auto;
+}
+
+#pPortefeuille {
+    margin:auto;
+}
+
+#divTablePortefeuilleActions {
+    overflow-y: auto;
+    max-height: 90%;
+}
+
+#tablePortefeuilleActions {
+    width: 100%;
+}
+
+#tableEntetePortefeuilleActions {
+    height: 10px;
+}
+
+#tableEnteteSeparateurPortefeuilleActions {
+    height: 1px;
+}
+
+.trPortefeuilleActions {
+    height: 40px;
+}
+
+.tdPremierPortefeuilleActions {
+    border: 1px solid black;
+    width: 10%;
+}
+
+.tdDeuxiemePortefeuilleActions {
+    border: 1px solid black;
+    width: 50%;
+}
+
+.tdTroisiemePortefeuilleActions {
+    border: 1px solid black;
+    width: 20%;
+}
+
+.tdQuatriemePortefeuilleActions {
+    border: 1px solid black;
+    width: 20%;
+}
+
+
+/* récapitulatif des actions */
+
+#tableRecapitulatif {
+    margin:auto;
+}
+
+#pEnteteRecapitulatif {
+    text-align: center;
+    margin:auto;
+}
+
+#divRecapitulatif {
+    margin:auto;
+    width: 100%;
+    height: 100%;
+}
+
+#pRecapitulatif {
+    font-size: 50px;
+    text-align: center;
+}
+
+#pValeurTotale {
+    font-size: 50px;
+    text-align: center;
+}
+
+.Recapitulatif {
+    text-align: center;
+    margin:auto;
+}
+
+.ResultatRecapitulatif {
+    font-size: 50px;
+    text-align: center;
+}
+
+/* graphique du swag */
+
+.tableGraphique {
+    margin:auto;
+}
+
+#chart {
+    width: 100%;
+    height : 80%;
+}
+
+#pEnteteGraphique {
+    margin:auto;
+}
+
+.tdBoutonsGraphique {
+    text-align: center;
+    margin:auto;
+}
+
+#boutonNoLimit {
+    margin:auto;
+    text-align: center;
+}
+
+#boutonLimit {
+    margin:auto;
+    text-align: center;
+}
